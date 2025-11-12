@@ -1,29 +1,75 @@
-Spaceship ship;
+Spaceship ship = new Spaceship();
+boolean pressingW = false;
+boolean pressingS = false;
+boolean pressingA = false;
+boolean pressingD = false;
+boolean pressingH= false;
+Star[] nightSky= new Star[200];
 void setup(){
-  size(800,800);
-  ship= new Spaceship();
-  ship.myCenterX=100;
-  ship.myCenterY=100;
+size(600,600);
   ship.myColor=252;
+  for(int i=0;i<nightSky.length;i++){
+  nightSky[i]= new Star();
 }
+}
+
+
+void draw() {
+background(0);
+ship.show();
+ship.move();
+if (pressingW == true){
+ship.accelerate(0.25);
+}
+if (pressingS == true){
+ship.accelerate(-0.25);
+}
+if (pressingA == true){
+ship.turn(-5);
+}
+if (pressingD == true){
+ship.turn(5);
+}
+for(int i=0;i<nightSky.length;i++){
+  nightSky[i].show();
+}
+
+}
+
 public void keyPressed(){
-  if(key=='w'){
-    ship.accelerate(1);
-  }
-  if(key=='s'){
-    ship.accelerate(-1);
-  }
-  if(key=='a'){
-    ship.turn(2);
-    ship.myPointDirection+=2;
+if (key == 'w'){
+pressingW = true;
 }
-  if(key=='d'){
-    ship.turn(-2);
-  }
+if (key == 's'){
+pressingS = true;
 }
-void draw(){
-  background(0);
-  ship.move();
-  ship.show();
+if (key == 'a'){
+pressingA = true;
+}
+if (key == 'd'){
+pressingD = true;
+}
+if(key=='h'){
+  ship.setXspeed(0);
+  ship.setYspeed(0);
+}
+}
+
+public void keyReleased(){
+if (key == 'w'){
+pressingW = false;
+}
+if (key == 's'){
+pressingS = false;
+}
+if (key == 'a'){
+pressingA = false;
+}
+if (key == 'd'){
+pressingD = false;
+}
+if (key == 'h'){
   
+}
+
 }
