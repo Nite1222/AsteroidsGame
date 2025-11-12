@@ -68,8 +68,6 @@ pressingA = false;
 if (key == 'd'){
 pressingD = false;
 }
-if (key == 'h'){
-  
-}
+
 
 }
