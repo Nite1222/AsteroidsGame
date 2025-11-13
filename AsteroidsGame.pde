@@ -52,6 +52,8 @@ pressingD = true;
 if(key=='h'){
   ship.setXspeed(0);
   ship.setYspeed(0);
+  ship.setPointDirection(Math.random()*200);
+  ship.setPosition();
 }
 }
 
