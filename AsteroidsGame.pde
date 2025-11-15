@@ -12,7 +12,7 @@ size(600,600);
   nightSky[i]= new Star();
 }
 }
-
+//hi
 
 void draw() {
 background(0);
