@@ -1,14 +1,15 @@
 Spaceship ship = new Spaceship();
-Asteroid asteroid= new Asteroid();
 boolean pressingW = false;
 boolean pressingS = false;
 boolean pressingA = false;
 boolean pressingD = false;
 boolean pressingH= false;
-ArrayList <Asteroid> asteroidList= new ArrayList <Asteroid>();
 Star[] nightSky= new Star[200];
+ArrayList <Asteroid> asteroidList= new ArrayList <Asteroid>();
+Asteroid asteroid= new Asteroid();
+
 void setup(){
-size(600,600);
+  size(600,600);
   ship.myColor=252;
   asteroid.myColor=252;
   for(int i=0;i<asteroidList.size();i++){
@@ -18,34 +19,44 @@ size(600,600);
   for(int i=0;i<nightSky.length;i++){
   nightSky[i]= new Star();
 }
+  
+  for(int i= 0; i< 20; i++){
+  asteroidList.add(new Asteroid());
+}
 }
 //hi
 
 void draw() {
-background(0);
-ship.show();
-ship.move();
-asteroid.show();
-asteroid.move();
-for(int i=0; i<asteroidList.size();i++){
-  asteroidList.get(i).move();
-  asteroidList.get(i).show();
-}
-if (pressingW == true){
-ship.accelerate(0.25);
-}
-if (pressingS == true){
-ship.accelerate(-0.25);
-}
-if (pressingA == true){
-ship.turn(-5);
-}
-if (pressingD == true){
-ship.turn(5);
-}
-for(int i=0;i<nightSky.length;i++){
-  nightSky[i].show();
-}
+  background(0);
+  ship.show();
+  ship.move();
+  asteroid.show();
+  asteroid.move();
+  for(int i=0; i<asteroidList.size();i++){
+    asteroidList.get(i).move();
+    asteroidList.get(i).show();
+    float d= dist((float)asteroidList.get(i).getX(), (float)asteroidList.get(i).getY(), (float)ship.getX(), (float)ship.getY());
+    if(d< 10){
+      asteroidList.remove(i);
+    }
+  }
+  if (pressingW == true){
+  ship.accelerate(0.25);
+  }
+  if (pressingS == true){
+  ship.accelerate(-0.25);
+  }
+  if (pressingA == true){
+  ship.turn(-5);
+  }
+  if (pressingD == true){
+  ship.turn(5);
+  }
+  for(int i=0;i<nightSky.length;i++){
+    nightSky[i].show();
+  }
+
+  
 
 }
 
@@ -83,7 +94,10 @@ pressingA = false;
 if (key == 'd'){
 pressingD = false;
 }
-
+else if(key==' '){
+  fill(255);
+  asteroidList.add(new Asteroid());
+}
 
 
 }
