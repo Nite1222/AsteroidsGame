@@ -6,22 +6,25 @@ boolean pressingD = false;
 boolean pressingH= false;
 Star[] nightSky= new Star[200];
 ArrayList <Asteroid> asteroidList= new ArrayList <Asteroid>();
+ArrayList <Bullet> shots= new ArrayList<Bullet>();
 Asteroid asteroid= new Asteroid();
-
+Bullet bullet= new Bullet();
 void setup(){
   size(600,600);
   ship.myColor=252;
   asteroid.myColor=252;
-  for(int i=0;i<asteroidList.size();i++){
-  fill(255);
-  asteroidList.add(new Asteroid());
-}
+  
+  //check this
+ 
   for(int i=0;i<nightSky.length;i++){
   nightSky[i]= new Star();
 }
   
   for(int i= 0; i< 20; i++){
   asteroidList.add(new Asteroid());
+}
+   for(int i= 0; i< 20; i++){
+  shots.add(new Asteroid());
 }
 }
 //hi
@@ -41,6 +44,7 @@ void draw() {
       i--;
     }
   }
+  
   if (pressingW == true){
   ship.accelerate(0.25);
   }
@@ -56,7 +60,10 @@ void draw() {
   for(int i=0;i<nightSky.length;i++){
     nightSky[i].show();
   }
-
+  for(int i=0; i<shots.size();i++){
+    shots.get(i).move();
+    shots.get(i).show();
+  }
   
 
 }
@@ -95,10 +102,10 @@ pressingA = false;
 if (key == 'd'){
 pressingD = false;
 }
+
 else if(key==' '){
   fill(255);
   asteroidList.add(new Asteroid());
 }
-
 
 }
