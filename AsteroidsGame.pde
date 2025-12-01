@@ -38,6 +38,7 @@ void draw() {
     float d= dist((float)asteroidList.get(i).getX(), (float)asteroidList.get(i).getY(), (float)ship.getX(), (float)ship.getY());
     if(d< 10){
       asteroidList.remove(i);
+      i--;
     }
   }
   if (pressingW == true){
