@@ -8,11 +8,11 @@ Star[] nightSky= new Star[200];
 ArrayList <Asteroid> asteroidList= new ArrayList <Asteroid>();
 ArrayList <Bullet> shots= new ArrayList<Bullet>();
 Asteroid asteroid= new Asteroid();
-Bullet bullet= new Bullet();
+
 void setup(){
   size(600,600);
-  ship.myColor=252;
-  asteroid.myColor=252;
+  ship.myColor=#172B66;
+  asteroid.myColor=#949484;
   
   //check this
  
@@ -23,9 +23,7 @@ void setup(){
   for(int i= 0; i< 20; i++){
   asteroidList.add(new Asteroid());
 }
-   for(int i= 0; i< 20; i++){
-  shots.add(new Asteroid());
-}
+
 }
 //hi
 
@@ -63,9 +61,20 @@ void draw() {
   for(int i=0; i<shots.size();i++){
     shots.get(i).move();
     shots.get(i).show();
+    if(shots.get(i).getX()>590 || shots.get(i).getX()<10 || shots.get(i).getY()>590 || shots.get(i).getY()<10){
+      shots.remove(i);
+      i--;
+    }
   }
-  
-
+  for(int i=0;i<shots.size();i++){
+    for(int j=0; j<asteroidList.size();j++){
+      float g= dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroidList.get(j).getX(), (float)asteroidList.get(j).getY());
+      if(g< 10){
+      asteroidList.remove(j);
+      j--;
+    }
+    }
+  }
 }
 
 public void keyPressed(){
@@ -104,8 +113,8 @@ pressingD = false;
 }
 
 else if(key==' '){
-  fill(255);
-  asteroidList.add(new Asteroid());
+  fill(228, 8, 10);
+  shots.add(new Bullet(ship));
 }
 
 }
