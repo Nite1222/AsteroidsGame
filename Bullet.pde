@@ -11,10 +11,10 @@ class Bullet extends Floater{
       yCorners[0]= 1;
       xCorners[1]= 1;
       yCorners[1]=-1;
-      xCorners[2]=-8;
-      yCorners[2]=1;
-      xCorners[3]=-8;
-      yCorners[3]=-1;
+      xCorners[2]=30;
+      yCorners[2]=-1;
+      xCorners[3]=30;
+      yCorners[3]=1;
       myColor = #F00707;
   }
   public double getX(){
