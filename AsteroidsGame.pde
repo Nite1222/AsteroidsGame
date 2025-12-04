@@ -7,12 +7,12 @@ boolean pressingH= false;
 Star[] nightSky= new Star[200];
 ArrayList <Asteroid> asteroidList= new ArrayList <Asteroid>();
 ArrayList <Bullet> shots= new ArrayList<Bullet>();
-Asteroid asteroid= new Asteroid();
+//Asteroid asteroid= new Asteroid();
 
 void setup(){
   size(600,600);
   ship.myColor=#172B66;
-  asteroid.myColor=#949484;
+
   
   //check this
  
@@ -31,13 +31,12 @@ void draw() {
   background(0);
   ship.show();
   ship.move();
-  asteroid.show();
-  asteroid.move();
+
   for(int i=0; i<asteroidList.size();i++){
     asteroidList.get(i).move();
     asteroidList.get(i).show();
     float d= dist((float)asteroidList.get(i).getX(), (float)asteroidList.get(i).getY(), (float)ship.getX(), (float)ship.getY());
-    if(d< 10){
+    if(d< 20){
       asteroidList.remove(i);
       i--;
     }
@@ -61,7 +60,7 @@ void draw() {
   for(int i=0; i<shots.size();i++){
     shots.get(i).move();
     shots.get(i).show();
-    if(shots.get(i).getX()>590 || shots.get(i).getX()<10 || shots.get(i).getY()>590 || shots.get(i).getY()<10){
+    if(shots.get(i).getX()>595 || shots.get(i).getX()<5 || shots.get(i).getY()>595 || shots.get(i).getY()<5){
       shots.remove(i);
       i--;
     }
@@ -69,7 +68,7 @@ void draw() {
   for(int i=0;i<shots.size();i++){
     for(int j=0; j<asteroidList.size();j++){
       float g= dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)asteroidList.get(j).getX(), (float)asteroidList.get(j).getY());
-      if(g< 10){
+      if(g< 20){
       asteroidList.remove(j);
       j--;
     }
