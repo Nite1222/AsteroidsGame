@@ -60,7 +60,7 @@ void draw() {
   for(int i=0; i<shots.size();i++){
     shots.get(i).move();
     shots.get(i).show();
-    if(shots.get(i).getX()>595 || shots.get(i).getX()<5 || shots.get(i).getY()>595 || shots.get(i).getY()<5){
+    if(shots.get(i).getX()>590 || shots.get(i).getX()<10 || shots.get(i).getY()>590 || shots.get(i).getY()<10){
       shots.remove(i);
       i--;
     }
